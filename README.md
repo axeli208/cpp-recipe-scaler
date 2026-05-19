@@ -1,1 +1,1 @@
-# cpp-recipe-calc
+# cpp-recipe-scaler
