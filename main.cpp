@@ -2,32 +2,47 @@
 #include <cmath>
 using namespace std;
 
+struct Ingredient{
+    string name;
+    float amount;
+    string unit;
+};
+
 void browniesRecipe() {
      int baseServing = 4;
      int serving;
      
-     float chocolate = 200;
-     float sugar = 150;
-     float butter = 100;
-     float egg = 2;
-     float flour = 100;
-     float cocoa = 2;
+     ingredient brownies[6] = { 
+     {"dark chocolate", 200, "g"}, 
+     {"sugar", 150, "g"}, 
+     {"butter", 100, "g"}, 
+     {"egg", 2, "eggs"}, 
+     {"flour", 100, "g"}, 
+     {"cocoa powder", 2, "tbsp"} 
+     };
      
      cout << "=====simple brownies recipe=====" << endl;
      cout << "serving for 4 people\n";
      
      cout << "\nhow many people? ";
      cin >> serving;
+
+     cout << "\ningredient for "
+          << serving
+          <<" people: \n";
+     
+     if(serving <= 0){
+     cout << "Invalid input!";
+     return;
+     }
      
      float scale = (float)serving / baseServing;
-     
-     cout << "\ningredient for " << serving <<" people: \n";
-     cout << round(butter * scale) << "g butter\n"
-          << round(chocolate * scale) << "g dark chocolate\n"
-          << round(sugar * scale) << "g sugar\n"
-          << round(egg * scale) << " eggs\n"
-          << round(flour * scale) << "g flour\n"
-          << round(cocoa * scale) << " tbsp cocoa powder" << endl;
+
+     for (int i = 0; i < 6; i++){
+          cout << round(brownies[i].amount * scale) 
+               << "" << brownies[i].unit 
+               << " " << brownies[i].name << endl;
+     }
      
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Melt the butter and chocolate together.\n"
@@ -42,26 +57,37 @@ void pancakesRecipe() {
      int baseServing = 4;
      int serving;
 
-     float flour = 200;
-     float milk = 300;
-     float egg = 2;
-     float sugar = 50;
-     float butter = 30;
-     float bakingPowder = 1;
+     ingredient pancakes[6] = {
+     {"flour", 200, "g"},
+     {"milk", 300, "ml"},
+     {"egg", 2, "eggs"},
+     {"sugar", 50, "g"},
+     {"butter", 30, "g"},
+     {"baking powder", 1, "tsp"}
+     };
 
      cout << "=====simple pancakes recipe=====" << endl;
      cout << "serving for 4 people\n";
      cout << "\nhow many people? ";
      cin >> serving;
-     float scale = (float)serving / baseServing;
-     cout << "\ningredient for " << serving <<" people: \n";
-     cout << round(flour * scale) << "g flour\n"
-          << round(milk * scale) << "ml milk\n"
-          << round(egg * scale) << " eggs\n"
-          << round(sugar * scale) << "g sugar\n"
-          << round(butter * scale) << "g butter\n"
-          << round(bakingPowder * scale) << " tsp baking powder" << endl;
 
+     cout << "\ningredient for "
+          << serving
+          <<" people: \n";
+     
+     if(serving <= 0){
+     cout << "Invalid input!";
+     return;
+     }
+     
+     float scale = (float)serving / baseServing;
+     
+     cout << "\ningredient for " << serving <<" people: \n";
+     for (int i = 0; i < 6; i++){
+          cout << round(pancakes[i].amount * scale) << " "
+               << pancakes[i].unit << " "
+               << pancakes[i].name << endl;
+     }
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Mix dry ingredients.\n"
           << "\t2. Add milk and eggs.\n"
@@ -73,25 +99,32 @@ void cookiesRecipe() {
      int baseServing = 4;
      int serving;
 
-     float Flour = 250;
-     float Butter = 120;
-     float Sugar = 100;
-     float Egg = 1;
-     float ChocolateChips = 80;
-     float Vanilla = 1;
+     ingredient cookies[6] = {
+     {"flour", 250, "g"},
+     {"butter", 120, "g"},
+     {"sugar", 100, "g"},
+     {"egg", 1, "eggs"},
+     {"chocolate chips", 80, "g"},
+     {"vanilla", 1, "tsp"}
+     };
 
      cout << "=====simple cookies recipe=====" << endl;
      cout << "serving for 4 people\n";
      cout << "\nhow many people? ";
      cin >> serving;
+
+     if(serving <= 0){
+     cout << "Invalid input!";
+     return;
+     }
+     
      float scale = (float)serving / baseServing;
      cout << "\ningredient for " << serving <<" people: \n";
-     cout << round(Flour * scale) << "g flour\n"
-          << round(Butter * scale) << "g butter\n"
-          << round(Sugar * scale) << "g sugar\n"
-          << round(Egg * scale) << " eggs\n"
-          << round(ChocolateChips * scale) << "g chocolate chips\n"
-          << round(Vanilla * scale) << " tsp vanilla" << endl;
+     for (int i = 0; i < 6; i++){
+          cout << round(cookies[i].amount * scale) << " "
+               << cookies[i].unit << " "
+               << cookies[i].name << endl;
+     }
 
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Mix butter and sugar.\n"
