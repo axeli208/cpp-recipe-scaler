@@ -8,6 +8,26 @@ struct Ingredient{
     string unit;
 };
 
+void showIngredients(Ingredient recipe[], int size, int baseServing) {
+     int serving;
+     cout << "\nhow many people? ";
+     cin >> serving;
+     
+     if (serving <= 0) {
+          cout << "Invalid number of people." << endl;
+          return;
+     }
+
+     float scale = (float)serving / baseServing;
+     
+     cout << "\ningredient for " << serving <<" people: \n";
+     for (int i = 0; i < 6; i++){
+          cout << round(recipe[i].amount * scale) << " "
+               << recipe[i].unit << " "
+               << recipe[i].name << endl;
+     }   
+}
+
 void browniesRecipe() {
      int baseServing = 4;
      int serving;
@@ -24,25 +44,7 @@ void browniesRecipe() {
      cout << "=====simple brownies recipe=====" << endl;
      cout << "serving for 4 people\n";
      
-     cout << "\nhow many people? ";
-     cin >> serving;
-
-     cout << "\ningredient for "
-          << serving
-          <<" people: \n";
-     
-     if(serving <= 0){
-     cout << "Invalid input!";
-     return;
-     }
-     
-     float scale = (float)serving / baseServing;
-
-     for (int i = 0; i < 6; i++){
-          cout << round(brownies[i].amount * scale) 
-               << "" << brownies[i].unit 
-               << " " << brownies[i].name << endl;
-     }
+     showIngredients(brownies, 6, baseServing);
      
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Melt the butter and chocolate together.\n"
@@ -74,20 +76,9 @@ void pancakesRecipe() {
      cout << "\ningredient for "
           << serving
           <<" people: \n";
-     
-     if(serving <= 0){
-     cout << "Invalid input!";
-     return;
-     }
-     
-     float scale = (float)serving / baseServing;
-     
-     cout << "\ningredient for " << serving <<" people: \n";
-     for (int i = 0; i < 6; i++){
-          cout << round(pancakes[i].amount * scale) << " "
-               << pancakes[i].unit << " "
-               << pancakes[i].name << endl;
-     }
+    
+     showIngredients(pancakes, 6, baseServing);
+    
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Mix dry ingredients.\n"
           << "\t2. Add milk and eggs.\n"
@@ -110,21 +101,8 @@ void cookiesRecipe() {
 
      cout << "=====simple cookies recipe=====" << endl;
      cout << "serving for 4 people\n";
-     cout << "\nhow many people? ";
-     cin >> serving;
-
-     if(serving <= 0){
-     cout << "Invalid input!";
-     return;
-     }
-     
-     float scale = (float)serving / baseServing;
-     cout << "\ningredient for " << serving <<" people: \n";
-     for (int i = 0; i < 6; i++){
-          cout << round(cookies[i].amount * scale) << " "
-               << cookies[i].unit << " "
-               << cookies[i].name << endl;
-     }
+    
+     showIngredients(cookies, 6, baseServing);
 
      cout << "\nInstructions:"<<endl;
      cout << "\t1. Mix butter and sugar.\n"
